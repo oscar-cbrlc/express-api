@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/oscar-cbrlc/express-api/issues"
   },
-  "homepage": "https://github.com/oscar-cbrlc/express-api#readme"
+  "homepage": "https://github.com/oscar-cbrlc/express-api#readme",
+  "devDependencies": {
+    "jest": "^28.0.1"
+  }
 }
