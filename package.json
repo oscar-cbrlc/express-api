@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/oscar-cbrlc/express-api#readme",
   "devDependencies": {
-    "jest": "^28.0.1"
+    "jest": "^28.0.1",
+    "superagent": "^7.1.3",
+    "supertest": "^6.2.2"
   }
 }
