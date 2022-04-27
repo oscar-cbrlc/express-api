@@ -29,7 +29,14 @@ app.put('/v1/explorers/:id', (req, res) => {
     console.log(`API Explorers PUT request ${new Date()}`)
     console.log(`Update exporer with id ${req.params.id}`)
     const requestBody = req.body // params of a client
-    res.status(200).json({message: "Updated!", body: requestBody})
+    
+    new_explorer = requestBody
+    new_explorer.id = req.params.id
+    
+    old_explorer = explorers.find(e => e.id == req.body.id)
+    explorers[explorers.indexOf(old_explorer)] = new_explorer
+
+    res.status(200).json({message: "Updated!", new_explorer: new_explorer})
 })
 
 app.delete('/v1/explorers/:id', (req, res) => {
