@@ -33,6 +33,11 @@ app.put('/v1/explorers/:id', (req, res) => {
     res.status(200).json({message: "Updated!", body: requestBody})
 })
 
-
+app.delete('/v1/explorers/:id', (req, res) => {
+    console.log(`API Explorers DELETE request ${new Date()}`)
+    console.log(`Delete exporer with id ${req.params.id}`)
+    const requestBody = req.body // params of a client
+    res.status(200).json({message: "Deleted!", body: requestBody})
+})
 
 module.exports = app
