@@ -22,7 +22,7 @@ app.post('/v1/explorers', (req, res) => {
     requestBody.id = explorers.at(explorers.length-1).id + 1
     explorers.push(requestBody)
     // 201 is 'Created'
-    res.status(201).json({message: "created", body:requestBody})
+    res.status(201).json({message: "created", new_explorer:requestBody})
 })
 
 app.put('/v1/explorers/:id', (req, res) => {
