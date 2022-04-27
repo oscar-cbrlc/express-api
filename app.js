@@ -26,4 +26,13 @@ app.post('/v1/explorers', (req, res) => {
     res.status(201).json({message: "created", body:requestBody})
 })
 
+app.put('/v1/explorers/:id', (req, res) => {
+    console.log(`API Explorers PUT request ${new Date()}`)
+    console.log(`Update exporer with id ${req.params.id}`)
+    const requestBody = req.body // params of a client
+    res.status(200).json({message: "Updated!", body: requestBody})
+})
+
+
+
 module.exports = app
