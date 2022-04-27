@@ -12,7 +12,7 @@ app.get('/v1/explorers', (req, res) => {
 app.get('/v1/explorers/:id', (req, res) => {
     console.log(`API Explorers GET request ${new Date()}`)
     console.log(`Getting explorer with id ${req.params.id}`)
-    const explorer = {id: req.params.id, name: "mauri"}
+    const explorer = explorers.find(e => e.id == req.params.id)
     res.status(200).json(explorer)
 })
 
