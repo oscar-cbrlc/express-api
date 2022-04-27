@@ -19,10 +19,14 @@ app.get('/v1/explorers/:id', (req, res) => {
 app.post('/v1/explorers', (req, res) => {
     console.log(`API Explorers POST request ${new Date()}`)
     const requestBody = req.body // params of a client
-    requestBody.id = explorers.at(explorers.length-1).id + 1
-    explorers.push(requestBody)
+
+    new_explorer = {}
+    new_explorer.id = explorers.at(explorers.length-1).id + 1
+    new_explorer.name = requestBody.name
+
+    explorers.push(new_explorer)
     // 201 is 'Created'
-    res.status(201).json({message: "created", new_explorer:requestBody})
+    res.status(201).json({message: "created", new_explorer: new_explorer})
 })
 
 app.put('/v1/explorers/:id', (req, res) => {
@@ -30,20 +34,25 @@ app.put('/v1/explorers/:id', (req, res) => {
     console.log(`Update exporer with id ${req.params.id}`)
     const requestBody = req.body // params of a client
     
-    new_explorer = requestBody
+    new_explorer = {}
     new_explorer.id = req.params.id
-    
-    old_explorer = explorers.find(e => e.id == req.body.id)
+    new_explorer.name = requestBody.name
+
+    old_explorer = explorers.find(e => e.id == req.params.id)
     explorers[explorers.indexOf(old_explorer)] = new_explorer
 
-    res.status(200).json({message: "Updated!", new_explorer: new_explorer})
+    res.status(200).json({message: "Updated!", explorers: explorers})
 })
 
 app.delete('/v1/explorers/:id', (req, res) => {
     console.log(`API Explorers DELETE request ${new Date()}`)
     console.log(`Delete exporer with id ${req.params.id}`)
-    const requestBody = req.body // params of a client
-    res.status(200).json({message: "Deleted!", body: requestBody})
+    // const requestBody = req.body // params of a client
+
+    old_explorer = explorers.find(e => e.id == req.params.id)
+    explorers.splice(explorers.indexOf(old_explorer), 1)
+
+    res.status(200).json({message: "Deleted!", explorers: explorers})
 })
 
 module.exports = app
